@@ -40,6 +40,29 @@ CustomerModel.belongsTo(CustomerAccountModel, {
   }
 });
 
+OrderModel.hasMany(OrderDetailModel,{
+  foreignKey: {
+    fieldName: 'orderId'
+  }
+});
+OrderDetailModel.belongsTo(OrderModel,{
+  foreignKey: {
+    fieldName: 'orderId'
+  }
+});
+
+OrderDetailModel.belongsTo(ProductModel,{
+  foreignKey:{
+    fieldName: 'productId'
+  }
+});
+
+ProductModel.hasOne(OrderDetailModel,{
+  foreignKey:{
+    fieldName: 'productId'
+  }
+});
+
 module.exports = {
   AddressModel,
   CategoryModel,

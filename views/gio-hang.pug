@@ -42,10 +42,20 @@ block content
       //- console.log($(this).attr("data-bar"))
       });
       $(".btn-dat-hang").click(function(){
-        $.post({url: '/dat-hang',success: function(result){
-          window.location.replace('/');
-        }})
-      })
+        let diachi = $('input[name="diachi"]').val();
+        let tennguoinhan = $('input[name="tennguoinhan"]').val();
+        let sodienthoai = $('input[name="sodienthoai"]').val();
+        console.log('alo')
+        $.post("/tao-don-hang",
+          {
+            diachi,
+            tennguoinhan,
+            sodienthoai 
+          },
+          function(data, status){
+            window.location.replace('/');
+          });        
+        });
     });
   link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN' crossorigin='anonymous')
   section.jumbotron.text-center
@@ -104,7 +114,22 @@ block content
                   strong Tổng tiền
                 td.text-right
                   strong #{totalPrice} VNĐ
-    h1 hello
+    h1.text-center.my-4 Thông tin giao hàng
+    .row
+      .col-6
+        p Tên người nhận hàng
+      .col-6
+        input.w-100(name="tennguoinhan" type="text" placeholder="Nhập tên người nhận hàng")
+    .row
+      .col-6
+        p Số điện thoại nhận hàng
+      .col-6
+        input.w-100(name="sodienthoai" type="text" placeholder="Nhập số điện thoại nhận hàng")
+    .row
+      .col-6
+        p Địa chỉ nhận hàng
+      .col-6
+        input.w-100(name="diachi" type="text" placeholder="Nhập địa chỉ nhận hàng")
       .col.mb-2
         .row
           .col-sm-12.col-md-6

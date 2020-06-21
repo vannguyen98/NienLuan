@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  include navbar.pug
+  div.pt-5
+    table.table.mt-5
+      thead
+        tr
+          th(scope='col') STT
+          th(scope='col') Ngày đặt hàng
+          th(scope='col') Trạng thái
+          th(scope='col') 
+      tbody
+        each val,index in orders
+          - var title = '/chi-tiet-don-hang/' + val.orderId
+          tr
+            th(scope='row') #{parseInt(index) + 1}
+            td #{val.dateOrder.toLocaleDateString()} : #{val.dateOrder.toLocaleTimeString()}
+            td= val.orderStatus == 0 ? "Chưa" : "Rồi"
+            td(style="width: 20%") 
+              a.btn.btn-success(href=title) Chi tiết
+              button.btn.btn-info.ml-1 Sửa
+              button.btn.btn-danger.ml-1 Xóa

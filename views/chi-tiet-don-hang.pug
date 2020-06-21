@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  include navbar.pug
+  div.clear-both.mt-5
+  div.pt-5.p-5
+    .row
+      .col-4
+        strong Ngày đặt hàng
+      .col-8
+        p #{order.dateOrder.toLocaleDateString()} : #{order.dateOrder.toLocaleTimeString()}
+      .col-4
+        strong Trạng thái đơn hàng
+      .col-8
+        p= order.orderStatus == 0 ? "Chưa" : "Đã hoàn thành"
+    table.table.mt-5
+      thead
+        tr
+          th(scope='col') STT
+          th(scope='col') Tên sản phẩm
+          th(scope='col') Số lượng
+          th(scope='col') Đơn giá
+          th(scope='col') Giảm giá
+      tbody
+        each val,index in orderDetails
+          tr
+            th(scope='row') #{parseInt(index) + 1}
+            td= val.product.name
+            td= val.quantity
+            td= val.unitPrice 
+            td= val.discount 

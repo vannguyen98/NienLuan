@@ -19,7 +19,7 @@ const { themSanPham, taoSanPham, quanLiSanPham } = require('../controllers/sanph
 const { getTatCaSanPhamTrongGioHang, themHangVaoGio, giamSoLuongHangTrongGio } = require('../controllers/giohang.controllers');
 
 const { dangKy, hienThiDangKy, dangNhap, hienThiDangNhap } = require('../controllers/xacthuc.controllers');
-const { taoDonDatHang } = require('../controllers/dathang.controllers');
+const { taoDonDatHang, quanLiDonHang, chiTietDonHang } = require('../controllers/dathang.controllers');
 
 /* GET home page. */
 router.get('/', getHome);
@@ -43,5 +43,7 @@ router.post('/dang-ky', dangKy)
 router.get('/dang-nhap', hienThiDangNhap)
 router.post('/dang-nhap', dangNhap)
 
-router.post('/dat-hang', taoDonDatHang)
+router.post('/tao-don-hang', taoDonDatHang)
+router.get('/quan-li-don-hang', quanLiDonHang)
+router.get('/chi-tiet-don-hang/:orderId', chiTietDonHang)
 module.exports = router;
