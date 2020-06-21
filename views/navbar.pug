@@ -1,0 +1,22 @@
+nav#ftco-navbar.navbar.navbar-expand-lg.navbar-dark.ftco_navbar.bg-dark.ftco-navbar-light
+  .container
+    a.navbar-brand(href='index.html') Van's cosmetic
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#ftco-nav' aria-controls='ftco-nav' aria-expanded='false' aria-label='Toggle navigation')
+      span.oi.oi-menu
+      |  Menu
+    #ftco-nav.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        li.nav-item(class= navActive == 'home'? 'active': '')
+          a.nav-link(href='/') Trang chủ
+        li.nav-item(class= navActive == 'face-makeup'? 'active': '')
+          a.nav-link(href='/face-makeup') Face-Makeup
+        li.nav-item(class= navActive == 'eye-makeup'? 'active': '')
+          a.nav-link(href='/eye-makeup') Eye-Makeup
+        li.nav-item(class= navActive == 'lip-makeup'? 'active': '')
+          a.nav-link(href='/lip-makeup') Lip-Makeup
+        li.nav-item(class= navActive == 'tip-beauty'? 'active': '')
+          a.nav-link(href='/tip-beauty') Tips
+        li.nav-item(class= navActive == 'contact'? 'active': '')
+          a.nav-link(href='/contact') Liên hệ 
+        li.nav-item(class= navActive == 'gio-hang'? 'active': '')
+          a.nav-link(href='/gio-hang') Giỏ hàng 

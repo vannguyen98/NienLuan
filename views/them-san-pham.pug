@@ -1,0 +1,99 @@
+doctype html
+html
+  head
+    title Tạo sản phẩm
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    // ===============================================================================================
+    link(rel='icon' type='image/png' href='images/icons/favicon.ico')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/bootstrap.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/animate.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/hamburgers.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/animsition.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/select2.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/daterangepicker.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/util.css')
+    link(rel='stylesheet' type='text/css' href='/css/main.css')
+    // ===============================================================================================
+    script(src='https://use.fontawesome.com/aef3cb5466.js')
+
+  body
+    .container-contact100
+      .wrap-contact100
+        form.contact100-form.validate-form(action="/admin-them-san-pham" method="POST" enctype="multipart/form-data")
+          span.contact100-form-title
+            | Thêm sản phẩm
+          .wrap-input100.validate-input(data-validate='Tên sản phẩm không phù hợp')
+            span.label-input100 Tên sản phẩm
+            input.input100(type='text' name='ten' placeholder='Nhập tên sản phẩm')
+            span.focus-input100
+          .wrap-input100.validate-input(data-validate='Giá sản phẩm không phù hợp')
+            span.label-input100 Giá
+            input.input100(type='number' name='gia' placeholder='Nhập giá sản phẩm')
+            span.focus-input100
+          .wrap-input100.validate-input(data-validate='Nhà sản xuất không phù hợp')
+            span.label-input100 Nhà sản xuất
+            input.input100(type='text' name='nhasanxuat' placeholder='Nhập nhà sản xuất')
+            span.focus-input100
+          .wrap-input100.input100-select
+            span.label-input100 Loại sản phẩm
+            div
+              select.selection-2(name='loai')
+                each val in categories
+                  option= val.name
+            span.focus-input100
+          .wrap-input100.validate-input(data-validate='Khuyến mãi không phù hợp')
+            span.label-input100 Khuyến mãi
+            input.input100(type='number' name='khuyenmai' placeholder='Nhập khuyến mãi')
+            span.focus-input100
+          .wrap-input100.validate-input(data-validate='Hình ảnh sản phẩm không phù hợp')
+            span.label-input100 Hình sản phẩm
+            input.input100(type='file' name='hinh')
+            span.focus-input100
+          .wrap-input100.validate-input(data-validate='Mô tả không phù hợp')
+            span.label-input100 Mô tả
+            textarea.input100(name='mota' placeholder='Nhập mô tả về sản phẩm')
+            span.focus-input100
+          .container-contact100-form-btn
+            .wrap-contact100-form-btn
+              .contact100-form-bgbtn
+              button.contact100-form-btn
+                span
+                  | Tạo
+                  i.fa.fa-long-arrow-right.m-l-7(aria-hidden='true')
+    #dropDownSelect1
+    // ===============================================================================================
+    script(src='/js/jquery-3.2.1.min.js')
+    // ===============================================================================================
+    script(src='/js/animsition.min.js')
+    // ===============================================================================================
+    script(src='/js/popper.min.js')
+    script(src='/js/bootstrap.min.js')
+    // ===============================================================================================
+    script(src='/js/select2.min.js')
+    script.
+      $(".selection-2").select2({
+      minimumResultsForSearch: 20,
+      dropdownParent: $('#dropDownSelect1')
+      });
+    // ===============================================================================================
+    script(src='/js/moment.min.js')
+    script(src='/js/daterangepicker.js')
+    // ===============================================================================================
+    script(src='/js/countdowntime.js')
+    // ===============================================================================================
+    script(src='/js/main2.js')
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-23581568-13')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-23581568-13');

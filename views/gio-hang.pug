@@ -1,0 +1,113 @@
+extends layout
+
+block content
+  link#bootstrap-css(href='/css/bootstrap.min.css' rel='stylesheet')
+  script(src='/js/bootstrap.min.js')
+  script(src='/js/jquery-3.2.1.min.js')
+  script.
+    $(document).ready(function(){
+    //- $.ajax({url: "/cap-nhat-gio-hang/abc?quantity=2", success: function(result){
+    //-   $(".jumbotron-heading").html("GIỎ HÈ");
+    //-   console.log(result);
+    //- }});
+      $( ".btn-increase" ).click(function() {
+        let quantity = $(this).attr("data-quantity");
+        let productId = $(this).attr("data-product");
+        let input = $(this);
+        $.ajax({url: `/tang-so-luong-gio-hang/${productId}?quantity=${quantity}`, success: function(result){
+          const { cart } = result;
+          for(let i = 0; i < cart.length; i++){
+            if(cart[i].product.productId === productId){
+              input.closest('td').find('input').val(cart[i].quantity);
+            }
+          }
+        }});
+      //- console.log($(this).attr("data-bar"))
+      });
+      $( ".btn-decrease" ).click(function() {
+        let quantity = $(this).attr("data-quantity");
+        let productId = $(this).attr("data-product");
+        let input = $(this);
+        $.ajax({url: `/giam-so-luong-gio-hang/${productId}?quantity=${quantity}`, success: function(result){
+          const { cart } = result;
+            if(cart.length === 0) {
+              $("#danh-sach-san-pham").html("<td colspan='6' class='text-center'>Giỏ hàng rỗng</td>");
+          }
+          for(let i = 0; i < cart.length; i++){
+            if(cart[i].product.productId === productId){
+              input.closest('td').find('input').val(cart[i].quantity);
+            }
+          }
+        }});
+      //- console.log($(this).attr("data-bar"))
+      });
+      $(".btn-dat-hang").click(function(){
+        $.post({url: '/dat-hang',success: function(result){
+          window.location.replace('/');
+        }})
+      })
+    });
+  link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN' crossorigin='anonymous')
+  section.jumbotron.text-center
+    .container
+      h1.jumbotron-heading GIỎ HÀNG
+  .container.mb-4
+    .row
+      .col-12
+        .table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th(scope='col')  
+                th(scope='col') Tên sản phẩm
+                th(scope='col') Hãng sản xuất
+                th(scope='col') Giảm giá
+                th.text-center(scope='col') Số lượng
+                th.text-right(scope='col') Giá
+                th  
+            tbody
+              each val,index in cart
+                tr#danh-sach-san-pham
+                  td
+                    img(src='https://dummyimage.com/50x50/55595c/fff')
+                  td= val.product.name
+                  td= val.product.producer
+                  td #{val.product.discount} %
+                  td
+                    input.form-control(type='number' value= val.quantity)
+                    button.btn-increase(data-quantity= val.quantity data-product= val.product.productId) +
+                    button.btn-decrease(data-quantity= val.quantity data-product= val.product.productId) -
+                  td.text-right #{val.totalPriceOfItem} VNĐ
+                  td.text-right
+                    button.btn.btn-sm.btn-danger
+                      i.fa.fa-trash
+              tr
+                td
+                td
+                td
+                td
+                td Thành tiền
+                td.text-right #{totalPrice} VNĐ
+              tr
+                td
+                td
+                td
+                td
+                td Shipping
+                td.text-right 0 VNĐ
+              tr
+                td
+                td
+                td
+                td
+                td
+                  strong Tổng tiền
+                td.text-right
+                  strong #{totalPrice} VNĐ
+    h1 hello
+      .col.mb-2
+        .row
+          .col-sm-12.col-md-6
+            a.btn.btn-block.btn-light(href="/") Tiếp tục mua hàng
+          .col-sm-12.col-md-6.text-right
+            button.btn-dat-hang.btn.btn-lg.btn-block.btn-success.text-uppercase Đặt hàng

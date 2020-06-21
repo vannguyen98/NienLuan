@@ -1,0 +1,80 @@
+doctype html
+html
+  head
+    title Đăng ký tài khoản
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    // ===============================================================================================
+    link(rel='icon' type='image/png' href='images/icons/favicon.ico')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/bootstrap.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/animate.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/hamburgers.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/animsition.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/select2.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/daterangepicker.css')
+    // ===============================================================================================
+    link(rel='stylesheet' type='text/css' href='/css/util.css')
+    link(rel='stylesheet' type='text/css' href='/css/main.css')
+    // ===============================================================================================
+    script(src='https://use.fontawesome.com/aef3cb5466.js')
+
+  body
+    .container-contact100
+      .wrap-contact100
+        form.contact100-form.validate-form(action="/dang-ky" method="POST")
+          span.contact100-form-title
+            | Đăng ký tài khoản
+          .wrap-input100.validate-input(data-validate='Email không phù hợp')
+            span.label-input100 Email
+            input.input100(type='email' name='email' placeholder='Nhập email')
+            span.focus-input100
+          .wrap-input100.validate-input(data-validate='Mật khẩu không phù hợp')
+            span.label-input100 Mật khẩu
+            input.input100(type='password' name='matkhau' placeholder='Nhập mật khẩu')
+            span.focus-input100
+          .wrap-input100.validate-input(data-validate='Mật khẩu không phù hợp')
+            span.label-input100 Nhập lại mật khẩu
+            input.input100(type='password' name='nhaplaimatkhau' placeholder='Nhập lại mật khẩu')
+            span.focus-input100
+          .container-contact100-form-btn
+            .wrap-contact100-form-btn
+              .contact100-form-bgbtn
+              button.contact100-form-btn
+                span
+                  | Đăng ký
+                  i.fa.fa-long-arrow-right.m-l-7(aria-hidden='true')
+    #dropDownSelect1
+    // ===============================================================================================
+    script(src='/js/jquery-3.2.1.min.js')
+    // ===============================================================================================
+    script(src='/js/animsition.min.js')
+    // ===============================================================================================
+    script(src='/js/popper.min.js')
+    script(src='/js/bootstrap.min.js')
+    // ===============================================================================================
+    script(src='/js/select2.min.js')
+    script.
+      $(".selection-2").select2({
+      minimumResultsForSearch: 20,
+      dropdownParent: $('#dropDownSelect1')
+      });
+    // ===============================================================================================
+    script(src='/js/moment.min.js')
+    script(src='/js/daterangepicker.js')
+    // ===============================================================================================
+    script(src='/js/countdowntime.js')
+    // ===============================================================================================
+    script(src='/js/main2.js')
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-23581568-13')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-23581568-13');
